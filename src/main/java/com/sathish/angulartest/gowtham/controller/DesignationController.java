@@ -13,41 +13,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sathish.angulartest.gowtham.entity.Department;
-import com.sathish.angulartest.gowtham.service.DepartmentService;
+import com.sathish.angulartest.gowtham.entity.Designation;
+import com.sathish.angulartest.gowtham.service.DesignationService;
 
 @RestController
-@RequestMapping("/department")
-public class DepartmentController {
+@RequestMapping("/designation")
+public class DesignationController {
 	
 	@Autowired
-	private DepartmentService depserv;
-	
-	
+	private DesignationService desgser;
 	
 	@GetMapping("/getall")
-	public List<Department> getall(){
-		return depserv.getall();
+	public List<Designation> getall(){
+		return desgser.getall();
 	}
 	
 	@GetMapping("/getbyid/{dep_id}")
-	public Optional<Department> getbyid(@PathVariable int dep_id) {
-		return depserv.getbyid(dep_id);
+	public Optional<Designation> getbyid(@PathVariable int desg_id) {
+		return desgser.getbyid(desg_id);
 	}
 	
 	@PostMapping("/add")
-	public String adddep(@RequestBody Department dep_body) {
-		return depserv.adddep(dep_body);
+	public String adddep(@RequestBody Designation desg_body) {
+		return desgser.adddesg(desg_body);
 	}
 	
 	@PutMapping("/update")
-	public String updatedep(@RequestBody Department dep_body) {
-		return depserv.updatedep(dep_body);
+	public String updatedep(@RequestBody Designation desg_body) {
+		return desgser.updatedesg(desg_body);
 	}
 	
 	@DeleteMapping("/delete/{dep_id}")
 	public String deletedep(@PathVariable int dep_id) {
-		return depserv.deletedep(dep_id);
+		return desgser.deletedesg(dep_id);
 	}
 
 }

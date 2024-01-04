@@ -13,41 +13,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sathish.angulartest.gowtham.entity.Department;
-import com.sathish.angulartest.gowtham.service.DepartmentService;
+import com.sathish.angulartest.gowtham.entity.Skill;
+import com.sathish.angulartest.gowtham.service.SkillService;
 
 @RestController
-@RequestMapping("/department")
-public class DepartmentController {
+@RequestMapping("/skill")
+public class SkillController {
 	
 	@Autowired
-	private DepartmentService depserv;
-	
-	
+	private SkillService skiser;
 	
 	@GetMapping("/getall")
-	public List<Department> getall(){
-		return depserv.getall();
+	public List<Skill> getall(){
+		return skiser.getall();
 	}
 	
 	@GetMapping("/getbyid/{dep_id}")
-	public Optional<Department> getbyid(@PathVariable int dep_id) {
-		return depserv.getbyid(dep_id);
+	public Optional<Skill> getbyid(@PathVariable int dep_id) {
+		return skiser.getbyid(dep_id);
 	}
 	
 	@PostMapping("/add")
-	public String adddep(@RequestBody Department dep_body) {
-		return depserv.adddep(dep_body);
+	public String adddep(@RequestBody Skill dep_body) {
+		return skiser.addski(dep_body);
 	}
 	
 	@PutMapping("/update")
-	public String updatedep(@RequestBody Department dep_body) {
-		return depserv.updatedep(dep_body);
+	public String updatedep(@RequestBody Skill dep_body) {
+		return skiser.updateski(dep_body);
 	}
 	
 	@DeleteMapping("/delete/{dep_id}")
 	public String deletedep(@PathVariable int dep_id) {
-		return depserv.deletedep(dep_id);
+		return skiser.deleteski(dep_id);
 	}
 
 }
