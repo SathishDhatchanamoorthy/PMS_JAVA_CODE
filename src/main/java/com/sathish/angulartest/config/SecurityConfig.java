@@ -60,6 +60,8 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class).build();
 	}
+	
+	
 
 	@Bean
 	PasswordEncoder passwordEncoder() {
