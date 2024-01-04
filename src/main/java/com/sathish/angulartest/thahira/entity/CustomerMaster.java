@@ -2,28 +2,32 @@ package com.sathish.angulartest.thahira.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class CustomerMaster {
 
-    @Id
-    private Long customerId;
-    
-    @Column
-    private String customerName;
-    
-    @Column
-    private String customerLocation;
-    
-    @Column
-    private int noOfProjectCompleted;
-    
-    @Column
-    private String partner;
-    
-    @Column
-    private String status;
+	   @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Long customerId;
+
+	    @Column
+	    private String customerName;
+
+	    @Column
+	    private String customerLocation;
+
+	    @Column
+	    private int noOfProjectsCompleted;
+
+	    @Column
+	    private boolean partner;
+
+	    @Column
+	    private String status;
+
     
 	public Long getCustomerId() {
 		return customerId;
@@ -46,22 +50,23 @@ public class CustomerMaster {
 		this.customerLocation = customerLocation;
 	}
 	
-	public int getNoOfProjectCompleted() {
-		return noOfProjectCompleted;
-	}
-	public void setNoOfProjectCompleted(int noOfProjectCompleted) {
-		this.noOfProjectCompleted = noOfProjectCompleted;
-	}
 	
-	public String getPartner() {
-		return partner;
-	}
-	public void setPartner(String partner) {
-		this.partner = partner;
-	}
 	
 	public String getStatus() {
 		return status;
+	}
+	
+	public int getNoOfProjectsCompleted() {
+		return noOfProjectsCompleted;
+	}
+	public void setNoOfProjectsCompleted(int noOfProjectsCompleted) {
+		this.noOfProjectsCompleted = noOfProjectsCompleted;
+	}
+	public boolean isPartner() {
+		return partner;
+	}
+	public void setPartner(boolean partner) {
+		this.partner = partner;
 	}
 	public void setStatus(String status) {
 		this.status = status;
@@ -70,8 +75,7 @@ public class CustomerMaster {
 	@Override
 	public String toString() {
 		return "CustomerMaster [customerId=" + customerId + ", customerName=" + customerName + ", customerLocation="
-				+ customerLocation + ", noOfProjectCompleted=" + noOfProjectCompleted + ", partner=" + partner
+				+ customerLocation + ", noOfProjectsCompleted=" + noOfProjectsCompleted + ", partner=" + partner
 				+ ", status=" + status + "]";
 	}
-
     }

@@ -1,10 +1,15 @@
 package com.sathish.angulartest.thahira.response;
 
 public class Response {
+	
 	private int code;
+	
 	private String message;
+	
 	private Object data;
+	
 	private boolean status;
+	
 	public int getCode() {
 		return code;
 	}
