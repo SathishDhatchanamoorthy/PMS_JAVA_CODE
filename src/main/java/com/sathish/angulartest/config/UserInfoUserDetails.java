@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.sathish.angulartest.entity.UserInfo;
+import com.sathish.angulartest.entity.UserMaster;
 
 public class UserInfoUserDetails implements UserDetails{
 	
@@ -17,10 +17,10 @@ public class UserInfoUserDetails implements UserDetails{
     private String password;
     private List<GrantedAuthority> authorities;
 
-    public UserInfoUserDetails(UserInfo userInfo) {
-        name=userInfo.getUsername();
-        password=userInfo.getPassword();
-        authorities= Arrays.stream(userInfo.getRoles().split(","))
+    public UserInfoUserDetails(UserMaster userMtr) {
+        name=userMtr.getUsername();
+        password=userMtr.getPassword();
+        authorities= Arrays.stream(userMtr.getRoleId().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
