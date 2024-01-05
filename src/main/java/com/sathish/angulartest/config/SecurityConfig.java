@@ -51,7 +51,11 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http.cors().and().csrf(csrf -> csrf.disable())
-				.authorizeHttpRequests().anyRequest().permitAll().and()
+				.authorizeRequests().anyRequest().permitAll()
+//				.authorizeHttpRequests().antMatchers("/signin","signup").permitAll().and()
+//				.authorizeHttpRequests().antMatchers("/getAllTeam","getAllTeam","/addTeam","/updateTeam","/deleteTeam").hasAuthority("1001")
+//				.anyRequest().authenticated()
+				.and()
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class).build();

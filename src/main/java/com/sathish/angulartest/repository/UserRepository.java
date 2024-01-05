@@ -14,6 +14,4 @@ public interface UserRepository extends JpaRepository<UserMaster, Integer>{
 	@Query(value = "select * from pms.user_master where name=?1",nativeQuery=true)
 	Optional<UserMaster> findByUsername(String username);
 
-//	@Query(value="select invtry_catagory,SUM(invtry_count) from springboot.inventory group by invtry_catagory",nativeQuery=true)
-//	List<Object>getSum();
 }
