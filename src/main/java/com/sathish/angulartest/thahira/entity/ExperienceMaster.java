@@ -8,13 +8,12 @@ import javax.persistence.Id;
 
 @Entity
 public class ExperienceMaster {
-
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long expId;
+    private Long experienceId;
 
     @Column
-    private String expLevel;
+    private String experienceLevel;
 
     @Column
     private String noOfYears;
@@ -22,20 +21,20 @@ public class ExperienceMaster {
     @Column
     private String designationId;
 
-	public Long getExpId() {
-		return expId;
+	public Long getExperienceId() {
+		return experienceId;
 	}
 
-	public void setExpId(Long expId) {
-		this.expId = expId;
+	public void setExperienceId(Long experienceId) {
+		this.experienceId = experienceId;
 	}
 
-	public String getExpLevel() {
-		return expLevel;
+	public String getExperienceLevel() {
+		return experienceLevel;
 	}
 
-	public void setExpLevel(String expLevel) {
-		this.expLevel = expLevel;
+	public void setExperienceLevel(String experienceLevel) {
+		this.experienceLevel = experienceLevel;
 	}
 
 	public String getNoOfYears() {
@@ -53,12 +52,4 @@ public class ExperienceMaster {
 	public void setDesignationId(String designationId) {
 		this.designationId = designationId;
 	}
-
-	@Override
-	public String toString() {
-		return "ExperienceMaster [expId=" + expId + ", expLevel=" + expLevel + ", noOfYears=" + noOfYears
-				+ ", designationId=" + designationId + "]";
-	}
-    
-    
 }

@@ -9,16 +9,20 @@ import org.springframework.stereotype.Service;
 import com.sathish.angulartest.thahira.entity.LocationMaster;
 import com.sathish.angulartest.thahira.repository.LocationRepository;
 import com.sathish.angulartest.thahira.response.Response;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class LocationService {
+	private static final Logger logger = LoggerFactory.getLogger(ExperienceService.class);
 
+	
 		@Autowired
 		private LocationRepository locationRepository;
 
 		public Response saveLocation(LocationMaster location) {
          locationRepository.save(location);
+         logger.info("Experience saved successfully: {}", location);
          return new Response(1,"success",location,true);
 		}
 		
@@ -39,21 +43,23 @@ public class LocationService {
 		public Response updateLocation(Long locationId, LocationMaster updatedLocation) {
 	        if (locationRepository.existsById(locationId)) {
 	            updatedLocation.setLocationId(locationId);
+	            updatedLocation=  locationRepository.save(updatedLocation);
+	        	logger.info("Experience updated successfully: {}", updatedLocation);
 	            return new Response(1,"success",updatedLocation,true);
 	        } else {
-	            // Handle not found scenario
+	        	 logger.error("Experience with ID {} not found during update.", locationId);
 	            return new Response(2,"error",updatedLocation,false);
 	        }
 		}
 
 	  
-		public String deleteLocation(Long locationId) {
+		public Response deleteLocation(Long locationId) {
 			 if (locationRepository.existsById(locationId)) {
 				 locationRepository.deleteById(locationId);
-		        return "Deleted Successfully";
+		        return new Response(1,"success",null,true);
 		        }
 			 else {
-				 return "Failed To Delete";
+				 return new Response(2,"error",null,false);
 			 }
 		}
 }

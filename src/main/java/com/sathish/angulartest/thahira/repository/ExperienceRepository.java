@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.sathish.angulartest.thahira.entity.ExperienceMaster;
 
 @Repository
-public interface ExperianceRepository extends JpaRepository<ExperienceMaster, Long> {
+public interface ExperienceRepository extends JpaRepository<ExperienceMaster, Long>{
 
 }

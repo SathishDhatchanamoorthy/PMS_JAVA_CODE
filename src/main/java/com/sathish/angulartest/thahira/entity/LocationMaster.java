@@ -5,25 +5,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="location_master")
 public class LocationMaster {
 		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Column(name="location_id")
 	    private Long locationId;
-		@Column
+		
+		@Column(name="location_name")
 	    private String locationName;
 		
-		@Column
+		@Column(name="city")
 	    private String city;
 		
-		@Column
+		@Column(name="state")
 	    private String state;
 		
-		@Column
+		@Column(name="country")
 	    private String country;
 		
-		@Column
+		@Column(name="postal_code")
 		private String postalCode;
 	    
 	    @Override

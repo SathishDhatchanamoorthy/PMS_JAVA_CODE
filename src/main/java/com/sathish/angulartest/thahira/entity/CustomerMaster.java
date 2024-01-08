@@ -5,27 +5,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="customer_master")
 public class CustomerMaster {
 
 	   @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    @Column(name="cust_id")
 	    private Long customerId;
 
-	    @Column
+	    @Column(name="cust_name")
 	    private String customerName;
 
-	    @Column
+	    @Column(name="cust_location")
 	    private String customerLocation;
 
-	    @Column
+	    @Column(name="no_of_projects_completed")
 	    private int noOfProjectsCompleted;
 
-	    @Column
+	    @Column(name="partner")
 	    private boolean partner;
 
-	    @Column
+	    @Column(name="status")
 	    private String status;
 
     

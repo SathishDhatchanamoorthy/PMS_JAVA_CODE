@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 import com.sathish.angulartest.thahira.entity.CustomerMaster;
 import com.sathish.angulartest.thahira.repository.CustomerRepository;
 import com.sathish.angulartest.thahira.response.Response;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @Service
 public class CustomerService {
+
+	private static final Logger logger = LoggerFactory.getLogger(ExperienceService.class);
 
 	@Autowired
 	CustomerRepository customerrepository;
@@ -19,6 +22,7 @@ public class CustomerService {
 	
 	 public Response saveCustomer(CustomerMaster customer) {
 	         customerrepository.save(customer);
+	         logger.info("Experience saved successfully: {}", customer);
 	         return new Response(1,"success",customer,true);
 	    }
 	 
@@ -43,8 +47,10 @@ public class CustomerService {
 	        if (customerrepository.existsById(customerId)) {
 	            updatedCustomer.setCustomerId(customerId);
 	            customerrepository.save(updatedCustomer);
+	            logger.info("Experience updated successfully: {}", updatedCustomer);
 	            return new Response(1,"success",updatedCustomer,true);
 	        } else {
+	          	 logger.error("Experience with ID {} not found during update.", customerId);
 	            return new Response(2,"error",updatedCustomer,false);
 	        }
 	    }

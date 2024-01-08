@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,32 +20,33 @@ import com.sathish.angulartest.thahira.service.RoleService;
 
 @RestController
 @RequestMapping("/Role")
+@CrossOrigin(value="http://localhost:4200/")
 public class RoleController {
 
 	@Autowired
 	RoleService roleService;
 	
-	@PostMapping
+	@PostMapping("/addRole")
     public Response addRole(@RequestBody RoleMaster role) {
         return roleService.saveRole(role);
     }
 	
-	@GetMapping
+	@GetMapping("/getAllRoles")
     public List<RoleMaster> getAllRoles() {
         return roleService.getAllRoles();
     }
 	
-	@GetMapping("/{id}")
+	@GetMapping("/getRoleById/{id}")
 	public Optional<RoleMaster> getRoleById(@PathVariable Long id) {
 	     return roleService.getRoleById(id);
 	 }
 	
-	 @PutMapping("/{id}")
+	 @PutMapping("/updateRole/{id}")
 	 public Response updateRole(@PathVariable Long id, @RequestBody RoleMaster updatedRole) {
 	      return roleService.updateRole(id, updatedRole);
 	 }
 	 
-	 @DeleteMapping("/{id}")
+	 @DeleteMapping("/deleteRole/{id}")
 	 public String deleteRole(@PathVariable Long id) {
 	       return roleService.deleteRole(id);
 	 }
