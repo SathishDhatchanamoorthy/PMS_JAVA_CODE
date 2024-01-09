@@ -6,17 +6,18 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.sathish.angulartest.gowtham.entity.Department;
+import com.sathish.angulartest.gowtham.response.Response;
 
 public interface DepartmentService {
 	
-	public List<Department> getall();
+	public List<Department> getAll();
 	
-    public Optional<Department> getbyid(int dep_id);
+    public Optional<Department> getById(int depId);
 	
-	public String adddep(Department dep_body);
+    Response adddepartment(Department depbody);
 	
-	public String updatedep(Department dep_body);
+    Response updatedepartment(Department depbody);
 
-	public String deletedep(int dep_id);
+    Response deletedepartment(int depId);
 
 }

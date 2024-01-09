@@ -1,5 +1,6 @@
 package com.sathish.angulartest.gowtham.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,54 +13,49 @@ public class Skill {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int skill_id;
+	@Column(name="skill_id")
+	public int skillId;
 	
-	public String skill_name;
+	@Column(name="skill_name")
+	public String skillName;
 	
-	public String skill_category;
+	@Column(name="skill_category")
+	public String skillCategory;
 	
-	public String pro_lvl;
+	@Column(name="pro_lvl")
+	public String proficiencyLevel;
 
-	public int getSkill_id() {
-		return skill_id;
+	public int getSkillId() {
+		return skillId;
 	}
 
-	public void setSkill_id(int skill_id) {
-		this.skill_id = skill_id;
+	public void setSkillId(int skillId) {
+		this.skillId = skillId;
 	}
 
-	public String getSkill_name() {
-		return skill_name;
+	public String getSkillName() {
+		return skillName;
 	}
 
-	public void setSkill_name(String skill_name) {
-		this.skill_name = skill_name;
+	public void setSkillName(String skillName) {
+		this.skillName = skillName;
 	}
 
-	public String getSkill_category() {
-		return skill_category;
+	public String getSkillCategory() {
+		return skillCategory;
 	}
 
-	public void setSkill_category(String skill_category) {
-		this.skill_category = skill_category;
+	public void setSkillCategory(String skillCategory) {
+		this.skillCategory = skillCategory;
 	}
 
-	public String getPro_lvl() {
-		return pro_lvl;
+	public String getProficiencyLevel() {
+		return proficiencyLevel;
 	}
 
-	public void setPro_lvl(String pro_lvl) {
-		this.pro_lvl = pro_lvl;
+	public void setProficiencyLevel(String proficiencyLevel) {
+		this.proficiencyLevel = proficiencyLevel;
 	}
 
-	public Skill(int skill_id, String skill_name, String skill_category, String pro_lvl) {
-		super();
-		this.skill_id = skill_id;
-		this.skill_name = skill_name;
-		this.skill_category = skill_category;
-		this.pro_lvl = pro_lvl;
-	}
 	
-	
-
 }

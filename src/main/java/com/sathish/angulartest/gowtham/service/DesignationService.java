@@ -4,17 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import com.sathish.angulartest.gowtham.entity.Designation;
+import com.sathish.angulartest.gowtham.response.Response;
 
 public interface DesignationService {
 	
-    public List<Designation> getall();
+    public List<Designation> getAll();
 	
-    public Optional<Designation> getbyid(int desg_id);
+    public Optional<Designation> getById(int desgId);
 	
-	public String adddesg(Designation desg_body);
+    Response adddesignation(Designation desgbody);
 	
-	public String updatedesg(Designation desg_body);
+	Response updatedesignation(Designation desgbody);
 
-	public String deletedesg(int desg_id);
+	Response deletedesignation(int desgId);
 
 }

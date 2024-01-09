@@ -7,42 +7,67 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sathish.angulartest.gowtham.entity.Department;
+import com.sathish.angulartest.gowtham.entity.Skill;
 import com.sathish.angulartest.gowtham.repository.DepartmentRepository;
+import com.sathish.angulartest.gowtham.response.Response;
 import com.sathish.angulartest.gowtham.service.DepartmentService;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService{
 	
 	@Autowired
-	private DepartmentRepository deprepo;
+	private DepartmentRepository departmentrepository;
 	
 
 	@Override
-	public List<Department> getall() {
-		return deprepo.findAll();
+	public List<Department> getAll() {
+		return departmentrepository.findAll();
 	}
 
 	@Override
-	public Optional<Department> getbyid(int dep_id) {
-		return deprepo.findById(dep_id);
+	public Optional<Department> getById(int depId) {
+		return departmentrepository.findById(depId);
 	}
 
-	@Override
-	public String adddep(Department dep_body) {
-		deprepo.save(dep_body);
-		return "Department added successfully";
-	}
+	 @Override
+	    public Response adddepartment(Department depbody) {
+	        try {
+	        	Department savedSkill = departmentrepository.save(depbody);
+	            return new Response(1, "success", savedSkill);
+	        } catch (Exception e) {
+	           e.printStackTrace();
+	        }
+	        return new Response(-1, "failed","");
+	    }
 
+	 @Override
+	    public Response updatedepartment(Department depbody) {
+	        try {
+	        	Department savedSkill = departmentrepository.save(depbody);
+	            return new Response(1, "success", savedSkill);
+	        } catch (Exception e) {
+	           e.printStackTrace();
+	        }
+	        return new Response(-1, "failed","");
+	    }
+	
+	
 	@Override
-	public String updatedep(Department dep_body) {
-		deprepo.save(dep_body);
-		return "Department updated successfully";
-	}
+	 public Response deletedepartment(int depId) {
+	     try {
+	         Optional<Department> optionalSkill = departmentrepository.findById(depId);
 
-	@Override
-	public String deletedep(int dep_id) {
-		deprepo.deleteById(dep_id);
-		return "Department deleted successfully";
-	}
+	         if (optionalSkill.isPresent()) {
+	             Department deletedSkill = optionalSkill.get();
+	             departmentrepository.deleteById(depId);
+	             return new Response(1, "Success", deletedSkill);
+	         } else {
+	             return new Response(-1, "Skill not found","");
+	         }
+	     } catch (Exception e) {
+	         e.printStackTrace();
+	         return new Response(-1, "Failed to delete Skill: " ,"");
+	     }
+	 }
 
 }
