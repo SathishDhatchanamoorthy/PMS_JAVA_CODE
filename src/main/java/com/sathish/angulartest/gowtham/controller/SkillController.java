@@ -38,7 +38,7 @@ public class SkillController {
 		return skillservice.getAll();
 	}
 	
-	@GetMapping("/getbyid/{dep_id}")
+	@GetMapping("/getbyid/{skillId}")
 	public Optional<Skill> getById(@PathVariable int skillId) {
 		logger.info("Fetching skill with ID: {}", skillId);
 		return skillservice.getById(skillId);

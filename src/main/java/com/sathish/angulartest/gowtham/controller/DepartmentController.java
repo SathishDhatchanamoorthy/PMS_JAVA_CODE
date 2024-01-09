@@ -38,7 +38,7 @@ public class DepartmentController {
 		return departmentservice.getAll();
 	}
 	
-	@GetMapping("/getbyid/{dep_id}")
+	@GetMapping("/getbyid/{depId}")
 	public Optional<Department> getById(@PathVariable int depId) {
 		logger.info("Fetching department with ID: {}", depId);
 		return departmentservice.getById(depId);
