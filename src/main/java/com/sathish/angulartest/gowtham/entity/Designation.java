@@ -1,5 +1,6 @@
 package com.sathish.angulartest.gowtham.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,42 +13,40 @@ public class Designation {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int designation_id;
+	@Column(name="designation_id")
+	public int designationId;
 	
-	public String designation_name;
+	@Column(name="designation_name")
+	public String designationName;
 	
-	public String job_role;
+	@Column(name="job_role")
+	public String jobRole;
 
-	public int getDesignation_id() {
-		return designation_id;
+	public int getDesignationId() {
+		return designationId;
 	}
 
-	public void setDesignation_id(int designation_id) {
-		this.designation_id = designation_id;
+	public void setDesignationId(int designationId) {
+		this.designationId = designationId;
 	}
 
-	public String getDesignation_name() {
-		return designation_name;
+	public String getDesignationName() {
+		return designationName;
 	}
 
-	public void setDesignation_name(String designation_name) {
-		this.designation_name = designation_name;
+	public void setDesignationName(String designationName) {
+		this.designationName = designationName;
 	}
 
-	public String getJob_role() {
-		return job_role;
+	public String getJobRole() {
+		return jobRole;
 	}
 
-	public void setJob_role(String job_role) {
-		this.job_role = job_role;
+	public void setJobRole(String jobRole) {
+		this.jobRole = jobRole;
 	}
 
-	public Designation(int designation_id, String designation_name, String job_role) {
-		super();
-		this.designation_id = designation_id;
-		this.designation_name = designation_name;
-		this.job_role = job_role;
-	}
+	
 	
 	
 

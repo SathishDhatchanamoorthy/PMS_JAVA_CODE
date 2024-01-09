@@ -8,41 +8,65 @@ import org.springframework.stereotype.Service;
 
 import com.sathish.angulartest.gowtham.entity.Skill;
 import com.sathish.angulartest.gowtham.repository.SkillRepository;
+import com.sathish.angulartest.gowtham.response.Response;
 import com.sathish.angulartest.gowtham.service.SkillService;
 
 @Service
 public class SkillServiceImpl implements SkillService{
 	
 	@Autowired
-	private SkillRepository skirepo;
+	private SkillRepository skillrepository;
 	
 
 	@Override
-	public List<Skill> getall() {
-		return skirepo.findAll();
+	public List<Skill> getAll() {
+		return skillrepository.findAll();
 	}
 
 	@Override
-	public Optional<Skill> getbyid(int ski_id) {
-		return skirepo.findById(ski_id);
+	public Optional<Skill> getById(int skillId) {
+		return skillrepository.findById(skillId);
 	}
 
-	@Override
-	public String addski(Skill ski_body) {
-		skirepo.save(ski_body);
-		return "Skill updated successfully";
-	}
+	 @Override
+	    public Response addskill(Skill skillBody) {
+	        try {
+	        	Skill savedSkill = skillrepository.save(skillBody);
+	            return new Response(1, "success", savedSkill);
+	        } catch (Exception e) {
+	           e.printStackTrace();
+	        }
+	        return new Response(-1, "failed","");
+	    }
 
-	@Override
-	public String updateski(Skill ski_body) {
-		skirepo.save(ski_body);
-		return "Skill updated successfully";
-	}
+	 @Override
+	    public Response updateskill(Skill skillBody) {
+	        try {
+	        	Skill savedSkill = skillrepository.save(skillBody);
+	            return new Response(1, "success", savedSkill);
+	        } catch (Exception e) {
+	           e.printStackTrace();
+	        }
+	        return new Response(-1, "failed","");
+	    }
 
-	@Override
-	public String deleteski(int ski_id) {
-		skirepo.deleteById(ski_id);
-		return "Skill updated successfully";
-	}
+	 @Override
+	 public Response deleteskill(int skillId) {
+	     try {
+	         Optional<Skill> optionalSkill = skillrepository.findById(skillId);
+
+	         if (optionalSkill.isPresent()) {
+	             Skill deletedSkill = optionalSkill.get();
+	             skillrepository.deleteById(skillId);
+	             return new Response(1, "Success", deletedSkill);
+	         } else {
+	             return new Response(-1, "Skill not found","");
+	         }
+	     } catch (Exception e) {
+	         e.printStackTrace();
+	         return new Response(-1, "Failed to delete Skill: " ,"");
+	     }
+	 }
+
 
 }

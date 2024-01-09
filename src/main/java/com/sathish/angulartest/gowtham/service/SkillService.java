@@ -4,17 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import com.sathish.angulartest.gowtham.entity.Skill;
+import com.sathish.angulartest.gowtham.response.Response;
 
 public interface SkillService {
 	
-	public List<Skill> getall();
+	public List<Skill> getAll();
 	
-    public Optional<Skill> getbyid(int ski_id);
+    public Optional<Skill> getById(int skillid);
 	
-	public String addski(Skill ski_body);
+    Response addskill(Skill skillbody);
 	
-	public String updateski(Skill ski_body);
+	Response updateskill(Skill skillbody);
 
-	public String deleteski(int ski_id);
+	Response deleteskill(int skillid);
 
 }

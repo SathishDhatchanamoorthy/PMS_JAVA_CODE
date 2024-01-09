@@ -7,41 +7,65 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sathish.angulartest.gowtham.entity.Designation;
+import com.sathish.angulartest.gowtham.entity.Skill;
 import com.sathish.angulartest.gowtham.repository.DesignationRepository;
+import com.sathish.angulartest.gowtham.response.Response;
 import com.sathish.angulartest.gowtham.service.DesignationService;
 
 @Service
 public class DesignationServiceImpl implements DesignationService {
 	
 	@Autowired
-	private DesignationRepository desrepo;
+	private DesignationRepository designationrepository;
 
 	@Override
-	public List<Designation> getall() {
-		return desrepo.findAll();
+	public List<Designation> getAll() {
+		return designationrepository.findAll();
 	}
 
 	@Override
-	public Optional<Designation> getbyid(int desg_id) {
-		return desrepo.findById(desg_id);
+	public Optional<Designation> getById(int desgId) {
+		return designationrepository.findById(desgId);
 	}
 
 	@Override
-	public String adddesg(Designation desg_body) {
-		desrepo.save(desg_body);
-		return "Designation added successfully";
-	}
+    public Response adddesignation(Designation desgbody) {
+        try {
+        	Designation savedSkill = designationrepository.save(desgbody);
+            return new Response(1, "success", savedSkill);
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        return new Response(-1, "failed","");
+    }
 
 	@Override
-	public String updatedesg(Designation desg_body) {
-		desrepo.save(desg_body);
-		return "Designation added successfully";
-	}
+    public Response updatedesignation(Designation desgbody) {
+        try {
+        	Designation savedSkill = designationrepository.save(desgbody);
+            return new Response(1, "success", savedSkill);
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        return new Response(-1, "failed","");
+    }
 
 	@Override
-	public String deletedesg(int desg_id) {
-		desrepo.deleteById(desg_id);
-		return "Designation deleted successfully";
-	}
+	 public Response deletedesignation(int desgId) {
+	     try {
+	         Optional<Designation> optionalSkill = designationrepository.findById(desgId);
+
+	         if (optionalSkill.isPresent()) {
+	        	 Designation deletedSkill = optionalSkill.get();
+	             designationrepository.deleteById(desgId);
+	             return new Response(1, "Success", deletedSkill);
+	         } else {
+	             return new Response(-1, "Skill not found","");
+	         }
+	     } catch (Exception e) {
+	         e.printStackTrace();
+	         return new Response(-1, "Failed to delete Skill: " ,"");
+	     }
+	 }
 
 }

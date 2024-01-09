@@ -11,7 +11,8 @@ import com.sathish.angulartest.entity.UserMaster;
 @Repository
 public interface UserRepository extends JpaRepository<UserMaster, Integer>{
 	
-	@Query(value = "select * from pms.user_master where name=?1",nativeQuery=true)
+	@Query(value ="select * from pms.user_master where name=?1",nativeQuery=true)
+
 	Optional<UserMaster> findByUsername(String username);
 
 }
