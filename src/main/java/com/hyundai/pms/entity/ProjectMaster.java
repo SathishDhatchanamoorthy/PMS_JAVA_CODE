@@ -1,4 +1,4 @@
-package com.sathish.angulartest.entity;
+package com.hyundai.pms.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,24 +13,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user_master")
+@Table(name = "project_master")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserMaster {
+public class ProjectMaster {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
-	private int userId;
-	@Column(name = "name")
-	private String username;
-	@Column(name = "password")
-	private String password;
-	@Column(name = "role_id")
-	private String roleId;
+	@Column(name = "project_id")
+	private int projectId;
+	@Column(name = "customer_id")
+	private String customerName;
+	@Column(name = "project_name")
+	private String projectName;
+	@Column(name = "start_date")
+	private String startDate;
+	@Column(name = "end_date")
+	private String endDate;
 	@Column(name = "status")
-	private boolean status;
+	private String status;
 
 }

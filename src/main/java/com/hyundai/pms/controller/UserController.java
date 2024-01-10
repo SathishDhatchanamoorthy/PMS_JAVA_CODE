@@ -1,4 +1,4 @@
-package com.sathish.angulartest.controller;
+package com.hyundai.pms.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,16 +12,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sathish.angulartest.config.UserInfoUserDetailsService;
-import com.sathish.angulartest.entity.AuthRequest;
-import com.sathish.angulartest.entity.UserMaster;
-import com.sathish.angulartest.entity.UserResponse;
-import com.sathish.angulartest.repository.UserRepository;
-import com.sathish.angulartest.service.JwtService;
+import com.hyundai.pms.config.UserInfoUserDetailsService;
+import com.hyundai.pms.entity.AuthRequest;
+import com.hyundai.pms.entity.UserMaster;
+import com.hyundai.pms.entity.UserResponse;
+import com.hyundai.pms.repository.UserRepository;
+import com.hyundai.pms.service.JwtService;
 
 @CrossOrigin
 @RestController
@@ -43,6 +44,9 @@ public class UserController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+//	@GetMapping
+//	public String 
 
 
 
