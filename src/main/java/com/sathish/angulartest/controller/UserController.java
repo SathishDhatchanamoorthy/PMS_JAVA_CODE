@@ -28,6 +28,7 @@ public class UserController {
 
 	@PostMapping("/signin")
 	public UserResponse signin(@RequestBody AuthRequest authRequest) {
+		System.err.println("checking");
 		return new UserResponse(1,"Login Success","",true);
 	}
 
