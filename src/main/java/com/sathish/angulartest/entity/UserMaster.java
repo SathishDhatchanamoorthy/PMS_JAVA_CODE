@@ -14,8 +14,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "user_master")
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserMaster {
@@ -32,5 +30,37 @@ public class UserMaster {
 	private String roleId;
 	@Column(name = "status")
 	private boolean status;
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
+	public boolean getStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	
+	
 
 }

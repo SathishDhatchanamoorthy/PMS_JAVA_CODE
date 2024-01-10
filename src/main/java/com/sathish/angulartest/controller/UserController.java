@@ -44,8 +44,6 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-
-
 	@PostMapping("/signin")
 	public UserResponse signin(@RequestBody AuthRequest authRequest) {
 		Authentication authentication = authenticationManager.authenticate(
