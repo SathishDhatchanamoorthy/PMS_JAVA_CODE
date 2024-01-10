@@ -34,5 +34,7 @@ public class ProjectMaster {
 	private String endDate;
 	@Column(name = "status")
 	private String status;
+	
+	
 
 }
