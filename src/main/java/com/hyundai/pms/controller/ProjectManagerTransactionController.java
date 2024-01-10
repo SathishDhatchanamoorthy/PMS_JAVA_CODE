@@ -55,5 +55,6 @@ public class ProjectManagerTransactionController {
 	public List<ProjectManagerTransaction> getManagerAvaiableProjects(@PathVariable String manager) {
 		return ps.getManagerAvaiableProjects(manager);
 	}
+	
 
 }
